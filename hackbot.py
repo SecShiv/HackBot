@@ -33,7 +33,7 @@ def interact_with_wormgpt(user_input, friendship_history):
 
         return ai_response.strip()  # Strip any leading or trailing whitespaces
     except Exception as e:
-        print("ALonelyHacker: Soz, I couldn't process your request. Maybe the API is down. Please try again later.")
+        print("HackerBot: Soz, I couldn't process your request. Maybe the API is down. Please try again later.")
         return ""
 
 def is_gibberish(input_text):
@@ -64,14 +64,14 @@ def load_friendship_history(filename="friendship_history.json"):
         return []
 
 def main():
-    print(f"{LIGHT_BLUE}ALonelyHacker:{ENDC} Hello Friend")
+    print(f"{LIGHT_BLUE}HackerBot:{ENDC} Hello Friend")
 
     gratitude_responses = [
-        "No problem bro!",
+        "No problem!",
         "Much Luvs ;).",
         "Anytime!",
         "Happy to assist!",
-        "You got it from here, brother/sister. I believe in you.",
+        "You got it from here. I believe in you.",
         "Let's gooooo :)"
     ]
 
@@ -91,7 +91,7 @@ def main():
                 break
 
             if is_gibberish(user_input):
-                print(f"{LIGHT_BLUE}ALonelyHacker:{ENDC} Please provide more info ;(")
+                print(f"{LIGHT_BLUE}HackerBot:{ENDC} Please provide more info ;(")
                 continue
 
             if user_input.lower() == 'show history':
@@ -100,12 +100,12 @@ def main():
                 continue
 
             if user_input.lower() == last_user_input:
-                print(f"{LIGHT_BLUE}ALonelyHacker:{ENDC} Stop being annoying.")
+                print(f"{LIGHT_BLUE}HackerBot:{ENDC} Stop being annoying.")
                 continue
 
             gratitude_words = ['thanks', 'thank you', 'nice', 'ok', 'nice, thanks a lot', 'appreciate it', 'grateful', 'much obliged', 'cool']
             if any(word in user_input.lower() for word in gratitude_words):
-                print(f"{LIGHT_BLUE}ALonelyHacker:{ENDC}", random.choice(gratitude_responses))
+                print(f"{LIGHT_BLUE}HackerBot:{ENDC}", random.choice(gratitude_responses))
                 continue
 
             response = interact_with_wormgpt(user_input, friendship_history)
@@ -116,7 +116,7 @@ def main():
 
             last_user_input = user_input
         except KeyboardInterrupt:
-            print(f"\n{LIGHT_BLUE}ALonelyHacker:{ENDC} Goodbye! Exiting...")
+            print(f"\n{LIGHT_BLUE}HackerBot:{ENDC} Goodbye! Exiting...")
             save_friendship_history(friendship_history)
             break
 
